@@ -111,77 +111,291 @@ export const addProductReview = async (req, res) => {
 // ------------------------------
 // CREATE DUMMY PRODUCTS (Seeder)
 // ------------------------------
+
+
 export const createDummyProducts = async (req, res) => {
   try {
-    // const dummyProducts = [
-    //   {
-    //     name: "Hilss Area बकरी",
-    //     description: "The country's varied climate and land types allow for the production",
-    //     price: 139999,
-    //     category: "बकरी",
-    //     brand: "बकरी",
-    //     stock: 25,
-    //     sub_category: "बकरी",
-    //     images: [
-    //       { url: "https://media.istockphoto.com/id/181141852/photo/goat.jpg?s=612x612&w=0&k=20&c=oEmgOsdF2a613h-xtECYCRWjE58kjdLZ8gsFo_6lx_4=" }
-    //     ],
-    //   },
-    //   {
-    //     name: "Desi बकरी",
-    //     description: "बकरी के बच्चों को बड़ा करके आसानी से कभी भी बेंचा जा सकता है.",
-    //     price: 84999,
-    //     category: "बकरी",
-    //     brand: "बकरी",
-    //     stock: 15,
-    //     sub_category: "बकरी",
-    //     images: [
-    //       { url: "https://media.istockphoto.com/id/146776721/photo/goats.jpg?s=612x612&w=0&k=20&c=z0GrAzkkLYJMAWQGy0Dsc-3y0ZfDWsxxvEu8FMKwy9c=" }
-    //     ],
-    //   },
-    //   {
-    //     name: "Nike ",
-    //     description: "Comfortable running shoes with ZoomX foam for ultimate cushioning.",
-    //     price: 10999,
-    //     category: "Footwear",
-    //     brand: "बकरी",
-    //     stock: 50,
-    //     sub_category: "बकरी",
-    //     images: [
-    //       { url: "https://images.livehindustan.com/uploadimage/library/16_9/16_9_1/Goat_And_Sheep_1503855017.jpg" }
-    //     ],
-    //   },
-    //   {
-    //     name: "Desi बकरी",
-    //     description: "he country's varied climate and land types allow for the production",
-    //     price: 67999,
-    //     category: "बकरी",
-    //     brand: "बकरी",
-    //     stock: 12,
-    //     sub_category: "बकरी",
-    //     images: [
-    //       { url: "https://media.istockphoto.com/id/174641203/photo/diversity.jpg?s=612x612&w=0&k=20&c=LVELwUlpLMy_vtpUX72XdDbHTF0oAA9zm-2Nic0lULg=" }
-    //     ],
-    //   },
-    // ];
+    const dummyProducts = [
+      {
+        name: "Apple MacBook Air M2",
+        description: "Powerful and lightweight laptop with M2 chip",
+        price: 114999,
+        category: "Electronics",
+        sub_category: "Laptops",
+        brand: "Apple",
+        stock: 15,
+        sold: 9,
+        ratings: 4.8,
+        numOfReviews: 12,
+        images: [{ url: "https://via.placeholder.com/300x300?text=MacBook+Air" }],
+      },
+      {
+        name: "Dell Inspiron 15",
+        description: "Everyday performance laptop",
+        price: 58999,
+        category: "Electronics",
+        sub_category: "Laptops",
+        brand: "Dell",
+        stock: 30,
+        sold: 18,
+        ratings: 4.2,
+        numOfReviews: 8,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Dell+Inspiron" }],
+      },
+      {
+        name: "iPhone 15",
+        description: "Latest Apple smartphone with advanced camera",
+        price: 79999,
+        category: "Electronics",
+        sub_category: "Mobiles",
+        brand: "Apple",
+        stock: 25,
+        sold: 20,
+        ratings: 4.7,
+        numOfReviews: 15,
+        images: [{ url: "https://via.placeholder.com/300x300?text=iPhone+15" }],
+      },
+      {
+        name: "Samsung Galaxy S23",
+        description: "Premium Android smartphone",
+        price: 69999,
+        category: "Electronics",
+        sub_category: "Mobiles",
+        brand: "Samsung",
+        stock: 20,
+        sold: 14,
+        ratings: 4.5,
+        numOfReviews: 10,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Galaxy+S23" }],
+      },
+      {
+        name: "Sony WH-1000XM5",
+        description: "Noise cancelling wireless headphones",
+        price: 29999,
+        category: "Electronics",
+        sub_category: "Headphones",
+        brand: "Sony",
+        stock: 40,
+        sold: 25,
+        ratings: 4.9,
+        numOfReviews: 22,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Sony+Headphones" }],
+      },
+      {
+        name: "Men Cotton T-Shirt",
+        description: "Comfortable cotton t-shirt",
+        price: 799,
+        category: "Fashion",
+        sub_category: "Men",
+        brand: "Roadster",
+        stock: 100,
+        sold: 60,
+        ratings: 4.1,
+        numOfReviews: 30,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Mens+Tshirt" }],
+      },
+      {
+        name: "Women Kurti",
+        description: "Stylish ethnic wear",
+        price: 1299,
+        category: "Fashion",
+        sub_category: "Women",
+        brand: "Biba",
+        stock: 80,
+        sold: 45,
+        ratings: 4.3,
+        numOfReviews: 25,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Women+Kurti" }],
+      },
+      {
+        name: "Running Shoes",
+        description: "Lightweight running shoes",
+        price: 3499,
+        category: "Fashion",
+        sub_category: "Footwear",
+        brand: "Nike",
+        stock: 50,
+        sold: 33,
+        ratings: 4.6,
+        numOfReviews: 18,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Running+Shoes" }],
+      },
+      {
+        name: "Mixer Grinder",
+        description: "500W powerful mixer grinder",
+        price: 2499,
+        category: "Home",
+        sub_category: "Kitchen",
+        brand: "Philips",
+        stock: 35,
+        sold: 22,
+        ratings: 4.4,
+        numOfReviews: 16,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Mixer" }],
+      },
+      {
+        name: "Non-Stick Cookware Set",
+        description: "5 piece cookware set",
+        price: 1999,
+        category: "Home",
+        sub_category: "Kitchen",
+        brand: "Prestige",
+        stock: 40,
+        sold: 28,
+        ratings: 4.2,
+        numOfReviews: 19,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Cookware" }],
+      },
+      {
+        name: "Smart Watch",
+        description: "Fitness smart watch",
+        price: 4999,
+        category: "Electronics",
+        sub_category: "Wearables",
+        brand: "Boat",
+        stock: 60,
+        sold: 40,
+        ratings: 4.0,
+        numOfReviews: 21,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Smart+Watch" }],
+      },
+      {
+        name: "Bluetooth Speaker",
+        description: "Portable speaker with deep bass",
+        price: 2999,
+        category: "Electronics",
+        sub_category: "Audio",
+        brand: "JBL",
+        stock: 55,
+        sold: 36,
+        ratings: 4.5,
+        numOfReviews: 20,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Speaker" }],
+      },
+      {
+        name: "Office Chair",
+        description: "Ergonomic office chair",
+        price: 6999,
+        category: "Furniture",
+        sub_category: "Office",
+        brand: "Green Soul",
+        stock: 20,
+        sold: 11,
+        ratings: 4.3,
+        numOfReviews: 9,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Office+Chair" }],
+      },
+      {
+        name: "Study Table",
+        description: "Wooden study table",
+        price: 5999,
+        category: "Furniture",
+        sub_category: "Home",
+        brand: "Ikea",
+        stock: 15,
+        sold: 7,
+        ratings: 4.1,
+        numOfReviews: 6,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Study+Table" }],
+      },
+      {
+        name: "Backpack",
+        description: "Water resistant backpack",
+        price: 1499,
+        category: "Accessories",
+        sub_category: "Bags",
+        brand: "Wildcraft",
+        stock: 70,
+        sold: 50,
+        ratings: 4.4,
+        numOfReviews: 27,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Backpack" }],
+      },
+      {
+        name: "Power Bank",
+        description: "20000mAh fast charging power bank",
+        price: 1799,
+        category: "Electronics",
+        sub_category: "Accessories",
+        brand: "Mi",
+        stock: 90,
+        sold: 65,
+        ratings: 4.6,
+        numOfReviews: 35,
+        images: [{ url: "https://via.placeholder.com/300x300?text=Power+Bank" }],
+      },
+    ];
 
-    const { name, description, price, category, brand, stock, sub_category } = req.body;
-    const data = req.body;
-    if (!name || !description || !price || !category || !sub_category || !stock || !brand) {
-      return res.status(400).json({ message: "Please fill all required fields" });
-    }
-
-    // Clear old data (optional)
+    // OPTIONAL: clear existing products
     // await Product.deleteMany();
 
-    const createdProducts = await Product.insertMany(data);
+    const createdProducts = await Product.insertMany(dummyProducts);
 
     res.status(201).json({
-      message: "4 dummy products created successfully",
+      success: true,
+      message: "Dummy products created successfully",
       count: createdProducts.length,
       products: createdProducts,
     });
   } catch (error) {
     console.error("Error seeding dummy products:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: error.message,
+    });
+  }
+};
+
+
+
+
+
+
+// ===============================
+// GET ALL PRODUCTS (Tab 1)
+
+
+// ===============================
+// NEW ARRIVALS (Latest products)
+// ===============================
+export const getNewArrivals = async (req, res) => {
+  try {
+    const products = await Product.find()
+      .sort({ createdAt: -1 })
+      .limit(8);
+
+    res.status(200).json({ success: true, products });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// ===============================
+// FEATURED PRODUCTS (High rating)
+// ===============================
+export const getFeaturedProducts = async (req, res) => {
+  try {
+    const products = await Product.find({ ratings: { $gte: 4 } })
+      .sort({ ratings: -1 });
+
+    res.status(200).json({ success: true, products });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// ===============================
+// TOP SELLING PRODUCTS
+// ===============================
+export const getTopSellingProducts = async (req, res) => {
+  try {
+    const products = await Product.find()
+      .sort({ sold: -1 })
+      .limit(8);
+
+    res.status(200).json({ success: true, products });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
 };
