@@ -399,3 +399,50 @@ export const getTopSellingProducts = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+
+export const filterProducts = async (req, res) => {
+  console.log("q111111111111111=============================")
+  try {
+    const { category, brand, minPrice, maxPrice, date } = req.body;
+
+    let filter = {};
+    console.log(category, brand, minPrice, maxPrice, date);
+
+    if (category) filter.category = category;
+    if (brand) filter.brand = brand;
+
+    if (minPrice > 0 || maxPrice > 0) {
+      filter.price = {};
+      if (minPrice !== undefined) filter.price.$gte = minPrice;
+      if (maxPrice !== undefined) filter.price.$lte = maxPrice;
+    }
+    console.log(filter, "=============================")
+    let query = Product.find(filter).limit(5);
+
+    // latest products by date
+    if (date) {
+      query = query.sort({ createdAt: -1 });
+    }
+    // console.log(query, "query jjjjjjjjjjjjjjjjjjjjjjj")
+
+    const products = await query;
+
+    res.status(200).json(products);
+  } catch (error) {
+    console.log("--------------------222222222222", error)
+    res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
+  }
+};
+export const filterProduct2s = async (req, res) => {
+  console.log("0000000000000000000000000")
+  try {
+    const products = await Product.find();
+    res.status(200).json({ count: products.length, products });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
