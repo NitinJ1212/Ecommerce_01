@@ -174,7 +174,7 @@ export default function Navbar({ isAuth, setIsAuth }) {
                 <span className="rounded-circle btn-md-square border">
                   <i className="fas fa-shopping-cart" />
                 </span>
-                <span className="text-dark ms-2">$0.00</span>
+                <span className="text-dark ms-2">$0.00333</span>
               </NavLink>
             </div>
           </div>

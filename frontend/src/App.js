@@ -81,6 +81,7 @@ import SingleProduct from "./pages/SingleProduct";
 import Login from "./components/Login";
 import CategoryManager from "./pages/category/CategoryManager";
 import StripeCheckout from "./pages/payment/StripeCheckout";
+import Cart from "./pages/cart/Cart";
 
 const About = lazy(() => import("./pages/About"));
 
@@ -110,6 +111,7 @@ export default function App() {
               <Route path="/category" element={<CategoryManager />} />
               <Route path="/users/:id" element={<UserDetail />} />
               <Route path="/about" element={<About />} />
+              <Route path="/cart" element={<Cart />} />
 
               {/* Dashboard nested routes */}
               <Route path="/dashboard" element={<DashboardLayout />}>

@@ -66,29 +66,31 @@ export const updateCartItem = async (req, res) => {
     try {
         const { productId, quantity } = req.body;
 
-        if (quantity < 1)
-            return res.status(400).json({ message: "Quantity must be at least 1" });
-
         const cart = await Cart.findOne({ user: req.user._id });
-        if (!cart) return res.status(404).json({ message: "Cart not found" });
-
-        const item = cart.items.find(
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found" });
+        }
+        const itemIndex = cart.items.findIndex(
             (item) => item.product.toString() === productId
         );
-
-        if (!item)
+        if (itemIndex === -1) {
             return res.status(404).json({ message: "Item not found in cart" });
-
-        item.quantity = quantity;
+        }
+        if (quantity <= 0) {
+            cart.items.splice(itemIndex, 1);
+        } else {
+            cart.items[itemIndex].quantity = quantity;
+        }
 
         calculateTotals(cart);
         await cart.save();
 
-        res.json(cart);
+        res.status(200).json(cart);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 // ➖ REMOVE ITEM
 export const removeFromCart = async (req, res) => {
@@ -105,7 +107,7 @@ export const removeFromCart = async (req, res) => {
         calculateTotals(cart);
         await cart.save();
 
-        res.json(cart);
+        res.json({ cart, status: true });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

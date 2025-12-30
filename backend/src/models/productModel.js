@@ -52,6 +52,10 @@ const productSchema = new mongoose.Schema(
       required: [true, "Please enter stock quantity"],
       min: 0,
     },
+    sold: {
+  type: Number,
+  default: 0, // used for "Top Selling"
+},
     images: [
       {
         url: { type: String, required: true },
