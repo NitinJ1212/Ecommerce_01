@@ -67,19 +67,19 @@ const ProductsUI = ({ user }) => {
     }
   };
 
-  const handleAddToCart = (product) => {
-    const productExists = cart.find((item) => item.product._id === product._id);
+  // const handleAddToCart = (product) => {
+  //   const productExists = cart.find((item) => item.product._id === product._id);
 
-    if (productExists) {
-      navigate("/cart");
-    } else {
-      const updatedCart = [
-        ...cart,
-        { product, quantity: 1, price: product.price }
-      ];
-      saveCart(updatedCart);
-    }
-  };
+  //   if (productExists) {
+  //     navigate("/cart");
+  //   } else {
+  //     const updatedCart = [
+  //       ...cart,
+  //       { product, quantity: 1, price: product.price }
+  //     ];
+  //     saveCart(updatedCart);
+  //   }
+  // };
 
   const renderStars = (rating) => {
     return [...Array(5)].map((_, i) => (
@@ -89,6 +89,41 @@ const ProductsUI = ({ user }) => {
       />
     ));
   };
+
+  const BASE_URL = "http://localhost:5000"; // change if needed
+
+  const addToCart = async (productId, quantity = 1) => {
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/cart/add`,
+        {
+          productId,
+          quantity,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || error;
+    }
+  };
+  const handleAddToCart = async (productId) => {
+    try {
+      const cart = await addToCart(productId._id, 1);
+      console.log("Cart updated:", cart);
+      alert("Added to cart!");
+    } catch (error) {
+      alert(error.message || "Failed to add to cart");
+    }
+  };
+
+
 
   return (
     <div className="container py-5">
@@ -100,27 +135,26 @@ const ProductsUI = ({ user }) => {
           </h1>
         </div>
 
-       <div className="col-lg-8 text-end">
-  <ul className="nav nav-pills justify-content-end flex-wrap mb-5">
-    {[
-      { id: "all", label: "All Products" },
-      { id: "new", label: "New Arrivals" },
-      { id: "featured", label: "Featured" },
-      { id: "top", label: "Top Selling" },
-    ].map((tab) => (
-      <li key={tab.id} className="nav-item mb-2">
-        <button
-          onClick={() => fetchProducts(tab.id)}
-          className={`btn btn-sm ${
-            activeTab === tab.id ? "btn-primary" : "btn-outline-secondary"
-          } rounded-pill mx-1`}
-        >
-          {tab.label}
-        </button>
-      </li>
-    ))}
-  </ul>
-</div>
+        <div className="col-lg-8 text-end">
+          <ul className="nav nav-pills justify-content-end flex-wrap mb-5">
+            {[
+              { id: "all", label: "All Products" },
+              { id: "new", label: "New Arrivals" },
+              { id: "featured", label: "Featured" },
+              { id: "top", label: "Top Selling" },
+            ].map((tab) => (
+              <li key={tab.id} className="nav-item mb-2">
+                <button
+                  onClick={() => fetchProducts(tab.id)}
+                  className={`btn btn-sm ${activeTab === tab.id ? "btn-primary" : "btn-outline-secondary"
+                    } rounded-pill mx-1`}
+                >
+                  {tab.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
       </div>
 
