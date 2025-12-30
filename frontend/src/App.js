@@ -80,6 +80,7 @@ import Shoping from "./pages/Shoping";
 import SingleProduct from "./pages/SingleProduct";
 import Login from "./components/Login";
 import CategoryManager from "./pages/category/CategoryManager";
+import StripeCheckout from "./pages/payment/StripeCheckout";
 
 const About = lazy(() => import("./pages/About"));
 
@@ -98,6 +99,7 @@ export default function App() {
             {/* 🔓 Public routes */}
             <Route element={<PublicRoute isAuth={isAuth} />}>
               <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+              <Route path="/stripecheckout" element={<StripeCheckout setIsAuth={setIsAuth} />} />
             </Route>
 
             {/* 🔒 Protected routes */}

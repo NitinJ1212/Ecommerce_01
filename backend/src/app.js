@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import userRoutes from "./routes/userRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js";
 import OrderRoutes from "./routes/orderRoutes.js";
@@ -37,5 +38,6 @@ app.use("/category", categoryRoutes);
 app.use("/product", productRoutes);
 app.use("/cart", cartRoutes);
 app.use("/order", OrderRoutes);
+app.use("/payments", paymentRoutes);
 
 export default app;
