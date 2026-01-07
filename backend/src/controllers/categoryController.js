@@ -30,6 +30,7 @@ export const createCategory = async (req, res) => {
 // GET ALL CATEGORIES
 // ---------------------------------------------------
 export const getCategories = async (req, res) => {
+console.log("-------calledddskkkkk");
   try {
     const categories = await Category.find();
     res.status(200).json(categories);
