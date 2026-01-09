@@ -36,7 +36,7 @@ export const createProduct = async (req, res) => {
 // GET ALL PRODUCTS
 // ------------------------------
 export const getAllProducts = async (req, res) => {
-  console.log("0000000000000000000000000")
+  console.log("from db----------------------")
   try {
     const products = await Product.find();
     res.status(200).json({ count: products.length, products });

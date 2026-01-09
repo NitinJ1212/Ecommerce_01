@@ -2,3 +2,7 @@
 
 node_modules
 .env
+# Environment variables
+.env
+backend/.env
+ 
