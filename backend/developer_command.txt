@@ -1,0 +1,33 @@
+
+
+
+
+
+
+
+
+
+
+docker build -t ecommerce-backend .
+docker run -p 5000:5000 --env-file .env --name ecommerce-backend ecommerce-backend
+docker run -p 5000:5000 --name ecommerce-backend --network ecommerce-network --env-file .env ecommerce-backend_app
+
+
+
+
+
+docker network create ecommerce-networks
+docker run -d --name redis --network ecommerce-networks redis:7
+docker run -d --name ecommerce-mongo --network ecommerce-networks -p 27017:27017 -v mongo-data:/data/db mongo:6
+docker run -p 5000:5000 --network ecommerce-networks --env-file .env --name ecommerce-backend ecommerce-backend
+
+docker run -p 5000-5000 --network ecommerce-networks --env-file .env --name ecommerce-backend 
+
+docker ps -a
+docker rm redis
+docker rm -f redis
+docker rm -f ecommerce-backend
+
+
+
+docker container prune   // remove all stopped container
