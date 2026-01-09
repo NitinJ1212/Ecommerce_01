@@ -31,6 +31,7 @@ docker rm -f ecommerce-backend
 
 
 docker container prune   // remove all stopped container
+<<<<<<< HEAD
 
 
 
@@ -55,3 +56,5 @@ exit
 
 .env file 
 
+=======
+>>>>>>> 1569137d19793e49bbef48e8bae30f94d9d9492c
