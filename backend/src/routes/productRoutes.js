@@ -1,7 +1,8 @@
 import express from "express";
 
 import { protect } from "../middleware/authMiddleware.js";
-import { createDummyProducts,filterProducts, getAllProducts, getFeaturedProducts, getNewArrivals, getProductById, getTopSellingProducts } from "../controllers/productController.js";
+import { cacheMiddleware } from "../middleware/cache.middleware.js";
+import { createDummyProducts, filterProducts, getAllProducts, getFeaturedProducts, getNewArrivals, getProductById, getTopSellingProducts } from "../controllers/productController.js";
 
 
 const router = express.Router();
@@ -9,7 +10,7 @@ const router = express.Router();
 // Public routes
 router.post("/addproducts", protect, createDummyProducts);
 
-router.get("/", protect, getAllProducts);
+router.get("/", cacheMiddleware(() => "products:all", 300), getAllProducts);
 
 router.post("/:id", protect, getProductById);
 
