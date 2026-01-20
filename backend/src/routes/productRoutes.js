@@ -10,11 +10,7 @@ const router = express.Router();
 // Public routes
 router.post("/addproducts", protect, createDummyProducts);
 
-<<<<<<< HEAD
 router.get("/", protect, cacheMiddleware(() => "products:all", 10), getAllProducts);
-=======
-router.get("/", cacheMiddleware(() => "products:all", 300), getAllProducts);
->>>>>>> 1569137d19793e49bbef48e8bae30f94d9d9492c
 
 router.post("/:id", protect, getProductById);
 

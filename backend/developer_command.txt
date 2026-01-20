@@ -31,8 +31,9 @@ docker rm -f ecommerce-backend
 
 
 docker container prune   // remove all stopped container
-<<<<<<< HEAD
 
+docker compose up --build
+docker compose down
 
 
 //FOR DB 
@@ -56,5 +57,19 @@ exit
 
 .env file 
 
-=======
->>>>>>> 1569137d19793e49bbef48e8bae30f94d9d9492c
+# Server Configuration
+PORT=5000
+
+# MongoDB Connection
+
+MONGO_URI=mongodb://localhost:27017/mvcdemo
+# MONGO_URI=mongodb://ecommerce-mongo:27017/ecommerce
+
+
+REDIS_URL=redis://redis:6379
+# MONGO_URL=mongodb://ecommerce-mongo:27017/ecommerce
+MONGO_URL=mongodb://127.0.0.1:27017/ecommerce
+
+
+
+CLIENT_URL=http://localhost:3000
